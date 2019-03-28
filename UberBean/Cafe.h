@@ -12,7 +12,7 @@
 @interface Cafe : NSObject
 
 @property NSString *name;
-@property CLLocation *location;
+@property CLLocationCoordinate2D coordinate;
 @property NSString *title;
 @property NSString *imageName;
 

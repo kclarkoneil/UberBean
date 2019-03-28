@@ -32,7 +32,7 @@
     [self.uberBeanMapView setRegion:MKCoordinateRegionMake(userLocation.coordinate, MKCoordinateSpanMake(0.2, 0.2))
                            animated:YES];
     NSURL *locationURL = [self.networkManager createURLWithLocation:userLocation];
-    [self.networkManager createRequestWithUrl:locationURL];
+    [self.networkManager createRequestWithUrl:locationURL andMapView:self.uberBeanMapView];
     NSLog(@"This is getting called here and there are %lu", (unsigned long)self.networkManager.cafeArray.count);
     for (Cafe *cafe in self.networkManager.cafeArray) {
         NSLog(@"%@", cafe.name);

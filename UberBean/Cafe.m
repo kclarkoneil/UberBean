@@ -17,9 +17,9 @@
         if (self) {
             
             //Grab title and imageName
-            _name = [infoDict objectForKey:@"name"];
-            _title = [infoDict objectForKey:@"title"];
-            _imageName = [infoDict objectForKey:@"image_url"];
+            self.name = [infoDict objectForKey:@"name"];
+            self.title = [infoDict objectForKey:@"title"];
+            self.imageName = [infoDict objectForKey:@"image_url"];
             
             //Grab coordinates and set location
             NSDictionary *coordinates = [infoDict objectForKey:@"coordinates"];
@@ -27,14 +27,13 @@
             NSString *latitudeString = [coordinates objectForKey:@"latitude"];
             NSString *longitudeString = [coordinates objectForKey:@"longitude"];
             
-            float latitude = [latitudeString floatValue];
-            float longitude = [longitudeString floatValue];
-            CLLocation *location =[[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+            double latitude = [latitudeString floatValue];
+            CLLocationDegrees latitudeDegrees = latitude;
+            double longitude = [longitudeString floatValue];
+            CLLocationDegrees longitudeDegrees = longitude;
+            CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitudeDegrees, longitudeDegrees);
             
-            _location = location;
-            
-           
-            
+            self.coordinate = location;
             
             
         }

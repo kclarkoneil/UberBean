@@ -13,7 +13,7 @@
 
 @property NSDictionary *dataDict;
 @property NSMutableArray *cafeArray;
--(NSDictionary*)createRequestWithUrl:(NSURL*)url;
+-(NSDictionary*)createRequestWithUrl:(NSURL*)url andMapView: (MKMapView*) mapView;
 -(NSURL*)createURLWithLocation:(CLLocation*)location;
 -(void)parseDictionary: (NSDictionary*) dictionary;
 @end

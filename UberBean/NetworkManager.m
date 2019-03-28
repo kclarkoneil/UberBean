@@ -9,7 +9,7 @@
 #import "NetworkManager.h"
 
 @implementation NetworkManager
--(NSDictionary*)createRequestWithUrl:(NSURL*)url {
+-(NSDictionary*)createRequestWithUrl:(NSURL*)url andMapView: (MKMapView*) mapView {
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     urlRequest.HTTPMethod = @"GET";
     
@@ -43,6 +43,7 @@
                                                   NSLog(@"They are: %lu items in this database", (unsigned long)self.dataDict.count);
                                                   dispatch_async(dispatch_get_main_queue(), ^{
                                                       [self parseDictionary:self.dataDict];
+                                                      [mapView addAnnotations:self.cafeArray];
                                                   });
                                               }
                                           }
@@ -64,9 +65,6 @@
     for (NSDictionary *cafeDict in cafeArray) {
         Cafe *newCafe = [[Cafe alloc] initWithDictionary:cafeDict];
         [self.cafeArray addObject:newCafe];
-    }
-    for (Cafe *cafe in self.cafeArray) {
-        NSLog(@"%@", cafe.name);
     }
 }
 @end
